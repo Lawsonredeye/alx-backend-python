@@ -8,9 +8,4 @@ from typing import Union, Tuple
 def to_kv(k: str, v: Union[int | float]) -> Tuple(str, float):
     ''' The first element of the tuple is the string k. The second element is
     the square of the int/float v and should be annotated as a float.'''
-    return tuple([k, float(v ** 2)])
-
-
-print(to_kv.__annotations__)
-print(to_kv("eggs", 3))
-print(to_kv("school", 0.02))
+    return tuple([k, float(v ** v)])
