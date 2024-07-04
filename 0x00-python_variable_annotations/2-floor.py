@@ -4,4 +4,5 @@
 
 def floor(n: float) -> int:
     """Round up float Point number to Int"""
-    return int(n)
+    n: int = int(n)
+    return n
