@@ -8,18 +8,18 @@ import unittest
 from parameterized import parameterized
 
 
-nested_val = {"some": {"thing": 1}}
-print(access_nested_map(nested_val, nested_val))
-
-
-class TestAccessNestedMap(unittest.testCase):
+class TestAccessNestedMap(unittest.TestCase):
     """Testing the nested_map function and its return values"""
 
-    @parameterized.expand(
-        nested_map={"a": 1}, path=("a",),
-        nested_map={"a": {"b": 2}}, path=("a",),
-        nested_map={"a": {"b": 2}}, path=("a", "b")
-        )
-    def test_access_nested_map(self):
-        """chc"""
-        self.assertEqual()
+    @parameterized.expand([
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), ({"b": 2})),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
+    ])
+    def test_access_nested_map(self, input, expected, output):
+        """check if the output is correct"""
+        self.assertEqual(access_nested_map(input, expected), output)
+
+
+if __name__ == "__main__":
+    unittest.main()
