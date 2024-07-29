@@ -33,6 +33,9 @@ class TestAccessNestedMap(unittest.TestCase):
 
         self.assertEqual(err.exception.args[0], path[-1])
 
+
+class TestGetJson(unittest.TestCase):
+    """Mocking HTTP calls from a mocked API"""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
