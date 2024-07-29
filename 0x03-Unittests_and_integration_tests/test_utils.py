@@ -24,7 +24,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-    def test_access_map_exception(self, nest_map, path):
+    def test_access_nested_map_exception(self, nest_map, path):
         """Testing for invalid parameters that doesnt match the key or value"""
         with self.assertRaises(KeyError) as err:
             access_nested_map(nest_map, path)
