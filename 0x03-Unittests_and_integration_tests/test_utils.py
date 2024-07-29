@@ -28,7 +28,7 @@ class TestAccessNestedMap(unittest.TestCase):
         """Testing for invalid parameters that doesnt match the key or value"""
         with self.assertRaises(KeyError) as err:
             access_nested_map(nest_map, path)
-        
+
         self.assertEqual(err.exception.args[0], path[-1])
 
 
