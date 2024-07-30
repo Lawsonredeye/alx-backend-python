@@ -53,6 +53,15 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_client.assert_called_once()
 
         mock_json.assert_called_once()
+    
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, KeyError),
+        ({"license": {"key": "other_license"}}, KeyError),
+    ])
+    def test_has_license(self):
+        """Mocks the output if it has a license"""
+        with self.assertRaises(KeyError) as err:
+            client = GithubOrgClient
 
 
 if __name__ == "__main__":
