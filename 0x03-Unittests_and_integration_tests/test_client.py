@@ -39,6 +39,21 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(client.org, output)
             self.assertEqual(client._public_repos_url, output['repos_url'])
 
+    @patch("client.get_json")
+    def test_public_repos(self, mock_json):
+        """Testing both patch decorator and context manager"""
+        mock_json.return_value = ["YOLO", "of", "repos"]
+
+        with patch("client.GithubOrgClient._public_repos_url",
+                   new_callable=PropertyMock) as mock_client:
+            mock_client.return_value = ["YOLO", "CONTEXT", "MANAGER"]
+            mock_client()
+            self.assertEqual(mock_json(), ["YOLO", "of", "repos"])
+
+            mock_client.assert_called_once()
+
+        mock_json.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()
